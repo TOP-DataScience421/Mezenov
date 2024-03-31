@@ -1,5 +1,4 @@
-InpNumStr = input('Введите трехзначное целое число: ')
-InpNum = int(InpNumStr)
+InpNum = int(input('Введите трехзначное целое число: '))
 Hundreds = InpNum//100
 Tens = (InpNum-(Hundreds*100))//10
 Ones = (InpNum-(Hundreds*100))%10
