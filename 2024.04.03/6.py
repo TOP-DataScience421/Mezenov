@@ -8,3 +8,8 @@ if abs(ord(CurrKingPos[0])-ord(NextKingPos[0])) <= 1 and abs(int(CurrKingPos[1])
     print('\nда')
 else:
     print('\nнет')
+    
+# Введите текщее положение Короля: h5
+# Введите следующее положение Короля: g6
+
+# да
