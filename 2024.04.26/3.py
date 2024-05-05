@@ -1,4 +1,4 @@
-def math_function_resolver(math_func: 'function', *x: float | int, to_str_switch: bool = False):
+def math_function_resolver(math_func: 'function', *x: float | int, to_str_switch: bool = False) -> 'function':
     """Принимает объект математической функции <math_func> с единственным аргументом и применяет эту функцию к произвольному кол-ву аргументов <x>. 
     Возвращает список результатов каждого выполнения переданной математической функции в виде объектов str или int в зависимости от значения флага <to_str_switch>, передаваемого в качестве необязательного ключевого аргумента
     """
