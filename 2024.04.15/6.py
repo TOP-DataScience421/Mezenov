@@ -7,7 +7,7 @@ parsed_bin_num = inp_bin_num
 
 #Удаляем стандартные префиксы из введенного двоичного числа используя предопределенное множество префиксов
 for l in bin_num_pref:
-    parsed_bin_num = parsed_bin_num.strip(l)
+    parsed_bin_num = parsed_bin_num.lstrip(l)
 
 #Удаляем все цифры '0' и '1' из оставшейся строки
 for n in bin_nums:
