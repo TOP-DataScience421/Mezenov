@@ -153,6 +153,8 @@ class Matrix:
         return result.__add__(other)
         
     def __mul__(self, other: Self | Number) -> Self:
+        if isinstance(other, Matrix):
+            raise NotImplementedError('умножение матриц будет реализовано в будущем')
         return self.__element_wise_operation(op.mul, other)
     
     def __rmul__(self, other: Self | Number) -> Self:
@@ -216,9 +218,8 @@ class Matrix:
 # 10 11 12 13 14
 # >>>
 # >>> m1 * m2
-# 1  2  3  4  5
-# 6  7  8  9 10
-# 11 12 13 14 15
+# ...
+# NotImplementedError: умножение матриц будет реализовано в будущем
 # >>>
 # >>> 3 + m1
 # 4 4 4 4 4
