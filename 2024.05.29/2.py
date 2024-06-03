@@ -58,7 +58,6 @@ class Matrix:
         self.m = m
         
         self.__transpose = []
-        length = self.n*self.m
         
         for r in range(self.m):
             for c in range(0, length, self.m):
