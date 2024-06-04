@@ -60,7 +60,7 @@ class Matrix:
         self.__transpose = []
         
         for r in range(self.m):
-            for c in range(0, length, self.m):
+            for c in range(0, len(self.__flat), self.m):
                 self.__transpose.append(self.__flat[c+r])
         
         self.__transpose = tuple(self.__transpose)
