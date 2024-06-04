@@ -85,7 +85,7 @@ class Matrix:
         Принимает объект мат. функции, экземпляр матрицы и экземпляр объекта с которым нужно провести мат. операцию
         Возвращает матрицу после проведения требуемой мат. операции
         """
-        result = list(self.__flat)
+        result: list(Number) = list(self.__flat)
         
         # Итерирруемся по строкам матрицы
         for ind in range(len(self.__flat)):
@@ -112,7 +112,7 @@ class Matrix:
         Проверяет, является ли переданный аргумент подходящим объектом для конструирования матрицы
         Возвращает bool
         """
-        valid_flag = True
+        valid_flag: bool = True
         
         # Проверка, что переданный объект - Iterable
         if isinstance(processed_matrix, Iterable) and isinstance(n, int) and isinstance(m, int):

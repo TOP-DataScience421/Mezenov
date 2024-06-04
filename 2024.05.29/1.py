@@ -45,7 +45,7 @@ class Matrix:
     """
     
     def __init__(self, raw_matrix: Iterable[Iterable[Number]]):
-        self.__rows = []
+        self.__rows: list[Iterable[Number]] = []
         # Если сконструиировать матрицу невозможно, вызывае  прерывание
         if not Matrix.is_valid(raw_matrix):
             raise ValueError('Невозможно сконструировать матрицу.')
@@ -54,8 +54,8 @@ class Matrix:
         for row in raw_matrix:
             self.__rows.append(list(row))
             
-        self.n = len(self.__rows)
-        self.m = len(self.__rows[0])
+        self.n: int = len(self.__rows)
+        self.m: int = len(self.__rows[0])
     
     
     @property
@@ -73,7 +73,7 @@ class Matrix:
         Принимает объект мат. функции, экземпляр матрицы и экземпляр объекта с которым нужно провести мат. операцию
         Возвращает матрицу после проведения требуемой мат. операции
         """
-        result = Matrix(self.__rows)
+        result: Matrix = Matrix(self.__rows)
         
         # Итерирруемся по строкам матрицы
         for row in range(self.n):
@@ -105,7 +105,7 @@ class Matrix:
         Проверяет, является ли переданный аргумент подходящим объектом для конструирования матрицы
         Возвращает bool
         """
-        valid_flag = True
+        valid_flag: bool = True
         
         # Проверка, что переданный объект - Iterable
         if isinstance(raw_matrix, Iterable):
@@ -155,8 +155,8 @@ class Matrix:
         return self.__element_wise_operation(op.neg)
         
     def __repr__(self) -> str:
-        output = ''
-        max_elem_width = 0
+        output: str = ''
+        max_elem_width: int = 0
         
         for row in self.__rows:
             for elem in row:
