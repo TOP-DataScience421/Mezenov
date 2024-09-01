@@ -145,9 +145,25 @@ for i in range(len(rus_prices_array)):
 max_corr_ind = 0   
 max_corr_coef = 0
 for ind in range(len(var_lists)):
+    
     if var_lists[ind][3] > max_corr_coef:
         max_corr_coef = var_lists[ind][3]
         max_corr_ind = ind
+     
+    # Информация для вывода в терминал:
+    print(f'Входные данные: {var_lists[ind][0]}\n{var_lists[ind][1]}')
+    print(f'Сдвиг между данными в месяцах: {var_lists[ind][2]}')
+    print(f'Коэффициент корреляции между данными: {var_lists[ind][3]}')
+
+print('\n\n')
+    
+print(f'Информация для выбранного набора: ')
+print(f'Сдвиг между данными в месяцах: {var_lists[max_corr_ind][2]}')
+print(f'Коэффициент корреляции между данными: {var_lists[max_corr_ind][3]}')
+print(f'Уравнение теоретической линии регрессии: ')
+print(f'{var_lists[max_corr_ind][4].round(3)}x + {var_lists[max_corr_ind][5].round(2)}')
+
+
         
 plt.scatter(var_lists[max_corr_ind][0], var_lists[max_corr_ind][1])
 plt.scatter(var_lists[max_corr_ind][0].mean(), var_lists[max_corr_ind][1].mean(), s=45, c='#000')
