@@ -9,6 +9,7 @@ from sys import path
 from pandas import read_csv
 from datetime import datetime, date, timedelta
 from dateutil import parser
+from dateutil.relativedelta import relativedelta
 from pprint import pprint
 
 rcParams['toolbar'] = 'None'
@@ -81,8 +82,9 @@ def corr_calc(main_data_array: array, main_dates_array: list, sec_data_array: ar
     for m_i in range(len(main_data_array)):
         for s_i in range(len(sec_data_array)):
             try:
-                if main_dates_array[m_i] + timedelta(0, bias, 0) == sec_dates_array[s_i]:
+                if main_dates_array[m_i] + relativedelta(months = bias) == sec_dates_array[s_i]:
                     data_lists[0].append(float(main_data_array[m_i - bias]))
+                    # print(f'{main_dates_array[m_i]=}+{relativedelta()=}|||{sec_dates_array[s_i]=}', f'{m_i=}|||{bias=}|||{len(data_lists[0])=}')
                     data_lists[1].append(float(sec_data_array[s_i]))
                     data_lists[2].append(main_dates_array[m_i])
                     data_lists[3].append(bias)
@@ -139,7 +141,10 @@ for ind in range(len(rus_dates_array)):
 # Сопоставление величин со всеми возможными смещениями
 var_lists = []
 for i in range(len(rus_prices_array)):
-    var_lists.append(corr_calc(export_prices_array, export_dates_list, rus_prices_array, rus_dates_list, i))
+    temp_var = corr_calc(export_prices_array, export_dates_list, rus_prices_array, rus_dates_list, i)
+    # Фильтрация по кол-ву данных в наборе
+    if len(temp_var[0]) > 60:
+        var_lists.append(temp_var)
 
 # Находим при каком смещении будет максимальный коэффициент корреляции 
 max_corr_ind = 0   
@@ -176,5 +181,11 @@ data_path = Path(path[0]) / 'regression_fig.png'
 plt.savefig(data_path, dpi=300)
 
 # plt.show()
+
+# Информация для выбранного набора:
+# Сдвиг между данными в месяцах: 59
+# Коэффициент корреляции между данными: 0.7783
+# Уравнение теоретической линии регрессии:
+# 0.031x + 36.97
 
     
